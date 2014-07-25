@@ -15,7 +15,7 @@ class LaravelQueueListener
     {
         $requestData = $data['requestData'];
         $inputToken = \Config::get('understand-laravel::config.token');
-        $apiUrl = \Config::get('understand-laravel::config.url');
+        $apiUrl = \Config::get('understand-laravel::config.url', 'https://api.understand.io');
         $silent = \Config::get('understand-laravel::config.silent');
 
         $syncHandler = new SyncHandler($inputToken, $apiUrl, $silent);
