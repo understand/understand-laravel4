@@ -1,0 +1,23 @@
+{
+    "name": "understand/understand-laravel",
+    "description": "",
+    "authors": [
+        {
+            "name": "Aivis",
+            "email": "aivis.silins@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.1.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Understand\\UnderstandLaravel\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
