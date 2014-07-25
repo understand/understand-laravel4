@@ -2,6 +2,7 @@
     "name": "understand/understand-laravel",
     "description": "Laravel service provider for Understand.io",
     "keywords": ["laravel", "undertstand.io", "understand", "logs"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Aivis",
@@ -10,7 +11,7 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "illuminate/support": "4.1.*"
+        "ext-curl": "*"
     },
     "autoload": {
         "classmap": [
