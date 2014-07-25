@@ -23,7 +23,10 @@
     },
     "extra": {
         "component": "package",
-        "frameworks": ["Laravel 4"]
+        "frameworks": ["Laravel 4"],
+        "branch-alias": {
+			"dev-master": "0.0-dev"
+		}
     },
     "minimum-stability": "stable"
 }
