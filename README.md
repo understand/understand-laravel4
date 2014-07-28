@@ -53,29 +53,38 @@ You may wish to capture additional meta data with each event. For example, it ca
  * Specify additional field providers for each log
  * E.g. sha1 version session_id will be appended to each "Log::info('event')"
  */
-'additional' => [
-    'model_log' => [
-        'session_id' => 'UnderstandFieldProvider::getSessionId',
-        'request_id' => 'UnderstandFieldProvider::getProcessIdentifier',
-        'user_id' => 'UnderstandFieldProvider::getUserId',
-        'env' => 'UnderstandFieldProvider::getEnvironment',
-        'client_ip' => 'UnderstandFieldProvider::getClientIp',
+    'log_types' => [
+    'eloquent_log' => [
+        'enabled' => false,
+        'meta' => [
+            'session_id' => 'UnderstandFieldProvider::getSessionId',
+            'request_id' => 'UnderstandFieldProvider::getProcessIdentifier',
+            'user_id' => 'UnderstandFieldProvider::getUserId',
+            'env' => 'UnderstandFieldProvider::getEnvironment',
+            'client_ip' => 'UnderstandFieldProvider::getClientIp',
+        ]
     ],
     'laravel_log' => [
-        'session_id' => 'UnderstandFieldProvider::getSessionId',
-        'request_id' => 'UnderstandFieldProvider::getProcessIdentifier',
-        'user_id' => 'UnderstandFieldProvider::getUserId',
-        'env' => 'UnderstandFieldProvider::getEnvironment',
+        'enabled' => true,
+        'meta' => [
+            'session_id' => 'UnderstandFieldProvider::getSessionId',
+            'request_id' => 'UnderstandFieldProvider::getProcessIdentifier',
+            'user_id' => 'UnderstandFieldProvider::getUserId',
+            'env' => 'UnderstandFieldProvider::getEnvironment',
+        ]
     ],
     'exception_log' => [
-        'session_id' => 'UnderstandFieldProvider::getSessionId',
-        'request_id' => 'UnderstandFieldProvider::getProcessIdentifier',
-        'user_id' => 'UnderstandFieldProvider::getUserId',
-        'env' => 'UnderstandFieldProvider::getEnvironment',
-        'url' => 'UnderstandFieldProvider::getUrl',
-        'method' => 'UnderstandFieldProvider::getRequestMethod',
-        'client_id' => 'UnderstandFieldProvider::getClientIp',
-        'user_agent' => 'UnderstandFieldProvider::getClientUserAgent'
+        'enabled' => true,
+        'meta' => [
+            'session_id' => 'UnderstandFieldProvider::getSessionId',
+            'request_id' => 'UnderstandFieldProvider::getProcessIdentifier',
+            'user_id' => 'UnderstandFieldProvider::getUserId',
+            'env' => 'UnderstandFieldProvider::getEnvironment',
+            'url' => 'UnderstandFieldProvider::getUrl',
+            'method' => 'UnderstandFieldProvider::getRequestMethod',
+            'client_id' => 'UnderstandFieldProvider::getClientIp',
+            'user_agent' => 'UnderstandFieldProvider::getClientUserAgent'
+        ]
     ]
 ]
 ```
