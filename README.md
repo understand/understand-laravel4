@@ -53,29 +53,38 @@ You may wish to capture additional meta data with each event. For example, it ca
  * Specify additional field providers for each log
  * E.g. sha1 version session_id will be appended to each "Log::info('event')"
  */
-'additional' => [
-    'model_log' => [
-        'session_id' => 'UnderstandFieldProvider::getSessionId',
-        'request_id' => 'UnderstandFieldProvider::getProcessIdentifier',
-        'user_id' => 'UnderstandFieldProvider::getUserId',
-        'env' => 'UnderstandFieldProvider::getEnvironment',
-        'client_ip' => 'UnderstandFieldProvider::getClientIp',
+    'log_types' => [
+    'eloquent_log' => [
+        'enabled' => false,
+        'meta' => [
+            'session_id' => 'UnderstandFieldProvider::getSessionId',
+            'request_id' => 'UnderstandFieldProvider::getProcessIdentifier',
+            'user_id' => 'UnderstandFieldProvider::getUserId',
+            'env' => 'UnderstandFieldProvider::getEnvironment',
+            'client_ip' => 'UnderstandFieldProvider::getClientIp',
+        ]
     ],
     'laravel_log' => [
-        'session_id' => 'UnderstandFieldProvider::getSessionId',
-        'request_id' => 'UnderstandFieldProvider::getProcessIdentifier',
-        'user_id' => 'UnderstandFieldProvider::getUserId',
-        'env' => 'UnderstandFieldProvider::getEnvironment',
+        'enabled' => true,
+        'meta' => [
+            'session_id' => 'UnderstandFieldProvider::getSessionId',
+            'request_id' => 'UnderstandFieldProvider::getProcessIdentifier',
+            'user_id' => 'UnderstandFieldProvider::getUserId',
+            'env' => 'UnderstandFieldProvider::getEnvironment',
+        ]
     ],
     'exception_log' => [
-        'session_id' => 'UnderstandFieldProvider::getSessionId',
-        'request_id' => 'UnderstandFieldProvider::getProcessIdentifier',
-        'user_id' => 'UnderstandFieldProvider::getUserId',
-        'env' => 'UnderstandFieldProvider::getEnvironment',
-        'url' => 'UnderstandFieldProvider::getUrl',
-        'method' => 'UnderstandFieldProvider::getRequestMethod',
-        'client_id' => 'UnderstandFieldProvider::getClientIp',
-        'user_agent' => 'UnderstandFieldProvider::getClientUserAgent'
+        'enabled' => true,
+        'meta' => [
+            'session_id' => 'UnderstandFieldProvider::getSessionId',
+            'request_id' => 'UnderstandFieldProvider::getProcessIdentifier',
+            'user_id' => 'UnderstandFieldProvider::getUserId',
+            'env' => 'UnderstandFieldProvider::getEnvironment',
+            'url' => 'UnderstandFieldProvider::getUrl',
+            'method' => 'UnderstandFieldProvider::getRequestMethod',
+            'client_id' => 'UnderstandFieldProvider::getClientIp',
+            'user_agent' => 'UnderstandFieldProvider::getClientUserAgent'
+        ]
     ]
 ]
 ```
@@ -153,70 +162,58 @@ By default each log event will be sent to Understand.io's api server directly af
 ### Configuration
 
 ```php
-
-<?php
-
 return [
 
     /**
      * Input key
      */
-    'token' => 'd9048b69-15fe-4da1-a623-d83cdc87e887',
-
-    /**
-     * Api server endpoint for http transport
-     */
-    'url' => 'localhost:3000',
+    'token' => 'your-input-token-from-understand-io',
 
     /**
      * Specifies whether logger should throw an exception of issues detected
      */
-    'silent' => false,
+    'silent' => true,
 
     /**
      * Specify which handler to use (sync|queue)
      */
     'handler' => 'sync',
-
-    /**
-     * Send all laravel logs to understnad.io (e.g. "Log::info('my event')")
-     */
-    'laravel_logs' => true,
-
-    /**
-     * Send all Eloquent model events and changes to understand.io
-     */
-    'eloquent_logs' => false,
-
-    /**
-     * Specify additional field providers for each log
-     * E.g. sha1 version session_id will be appended to each "Log::info('event')"
-     */
-    'additional' => [
-        'model_log' => [
-            'session_id' => 'UnderstandFieldProvider::getSessionId',
-            'request_id' => 'UnderstandFieldProvider::getProcessIdentifier',
-            'user_id' => 'UnderstandFieldProvider::getUserId',
-            'env' => 'UnderstandFieldProvider::getEnvironment',
-            'client_ip' => 'UnderstandFieldProvider::getClientIp',
+    
+    'log_types' => [
+        'eloquent_log' => [
+            'enabled' => false,
+            'meta' => [
+                'session_id' => 'UnderstandFieldProvider::getSessionId',
+                'request_id' => 'UnderstandFieldProvider::getProcessIdentifier',
+                'user_id' => 'UnderstandFieldProvider::getUserId',
+                'env' => 'UnderstandFieldProvider::getEnvironment',
+                'client_ip' => 'UnderstandFieldProvider::getClientIp',
+            ]
         ],
         'laravel_log' => [
-            'session_id' => 'UnderstandFieldProvider::getSessionId',
-            'request_id' => 'UnderstandFieldProvider::getProcessIdentifier',
-            'user_id' => 'UnderstandFieldProvider::getUserId',
-            'env' => 'UnderstandFieldProvider::getEnvironment',
+            'enabled' => true,
+            'meta' => [
+                'session_id' => 'UnderstandFieldProvider::getSessionId',
+                'request_id' => 'UnderstandFieldProvider::getProcessIdentifier',
+                'user_id' => 'UnderstandFieldProvider::getUserId',
+                'env' => 'UnderstandFieldProvider::getEnvironment',
+            ]
         ],
         'exception_log' => [
-            'session_id' => 'UnderstandFieldProvider::getSessionId',
-            'request_id' => 'UnderstandFieldProvider::getProcessIdentifier',
-            'user_id' => 'UnderstandFieldProvider::getUserId',
-            'env' => 'UnderstandFieldProvider::getEnvironment',
-            'url' => 'UnderstandFieldProvider::getUrl',
-            'method' => 'UnderstandFieldProvider::getRequestMethod',
-            'client_id' => 'UnderstandFieldProvider::getClientIp',
-            'user_agent' => 'UnderstandFieldProvider::getClientUserAgent'
+            'enabled' => true,
+            'meta' => [
+                'session_id' => 'UnderstandFieldProvider::getSessionId',
+                'request_id' => 'UnderstandFieldProvider::getProcessIdentifier',
+                'user_id' => 'UnderstandFieldProvider::getUserId',
+                'env' => 'UnderstandFieldProvider::getEnvironment',
+                'url' => 'UnderstandFieldProvider::getUrl',
+                'method' => 'UnderstandFieldProvider::getRequestMethod',
+                'client_id' => 'UnderstandFieldProvider::getClientIp',
+                'user_agent' => 'UnderstandFieldProvider::getClientUserAgent'
+            ]
         ]
     ]
+
 ];
 ```
 
