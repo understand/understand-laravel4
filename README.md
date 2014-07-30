@@ -87,7 +87,7 @@ You may wish to capture additional meta data with each event. For example, it ca
             'env' => 'UnderstandFieldProvider::getEnvironment',
             'url' => 'UnderstandFieldProvider::getUrl',
             'method' => 'UnderstandFieldProvider::getRequestMethod',
-            'client_id' => 'UnderstandFieldProvider::getClientIp',
+            'client_ip' => 'UnderstandFieldProvider::getClientIp',
             'user_agent' => 'UnderstandFieldProvider::getClientUserAgent'
         ]
     ]
@@ -213,7 +213,7 @@ return [
                 'env' => 'UnderstandFieldProvider::getEnvironment',
                 'url' => 'UnderstandFieldProvider::getUrl',
                 'method' => 'UnderstandFieldProvider::getRequestMethod',
-                'client_id' => 'UnderstandFieldProvider::getClientIp',
+                'client_ip' => 'UnderstandFieldProvider::getClientIp',
                 'user_agent' => 'UnderstandFieldProvider::getClientUserAgent'
             ]
         ]
