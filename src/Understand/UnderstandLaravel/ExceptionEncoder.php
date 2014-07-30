@@ -14,9 +14,12 @@ class ExceptionEncoder
     public function exceptionToArray(\Exception $exception)
     {
         $trace = $exception->getTrace();
+        $className = get_class($exception);
+        $message = $exception->getMessage() ? $exception->getMessage() : $className;
 
         return [
-            'message' => $exception->getMessage(),
+            'message' => $message,
+            'class' => $className,
             'code' => $exception->getCode(),
             'file' => $exception->getFile(),
             'line' => $exception->getLine(),
