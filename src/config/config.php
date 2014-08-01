@@ -16,7 +16,7 @@ return [
      * Specify which handler to use (sync|queue)
      */
     'handler' => 'sync',
-    
+
     'log_types' => [
         'eloquent_log' => [
             'enabled' => false,
@@ -35,6 +35,7 @@ return [
                 'request_id' => 'UnderstandFieldProvider::getProcessIdentifier',
                 'user_id' => 'UnderstandFieldProvider::getUserId',
                 'env' => 'UnderstandFieldProvider::getEnvironment',
+                'client_ip' => 'UnderstandFieldProvider::getClientIp',
             ]
         ],
         'exception_log' => [
