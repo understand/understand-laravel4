@@ -137,7 +137,7 @@ Lets assume that you have defined a custom field provider called `getCurrentTemp
     'laravel_log' => [
         'meta' => [
             ...
-            'Temperature' => 'UnderstandFieldProvider::getCurrentTemperature',
+            'temperature' => 'UnderstandFieldProvider::getCurrentTemperature',
             ...
         ]
     ],
