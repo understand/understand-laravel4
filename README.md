@@ -14,7 +14,7 @@ This packages provides a full abstraction for Understand.io and provides extra f
 1. Add this package to your composer.json and run `composer update`:
 
     ```php
-    "understand/understand-laravel": "1.*"
+    "understand/understand-laravel": "0.0.*"
     ```
 
 2. Add the ServiceProvider to the providers array in app/config/app.php
