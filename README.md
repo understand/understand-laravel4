@@ -154,7 +154,7 @@ This additional meta data will then be automatically appended to all of your Lar
 ```
 
 
-### How to send data asynchnoously
+### How to send data asynchronously
 By default each log event will be sent to Understand.io's api server directly after the event happens. If you generate a large number of logs, this could slow your app down and, in these scenarios, we recommend that you make use of a queue handler. To do this, change the config parameter `handler` to `queue` and Laravel queues will be automatically used. Bear in mind that by the default Laravel queue is `sync`, so you will still need to configure your queues properly using something like iron.io or Amazon SQS. See http://laravel.com/docs/queues for more information. 
 
 ```php
