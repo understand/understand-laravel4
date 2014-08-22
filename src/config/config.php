@@ -51,6 +51,11 @@ return [
                 'user_agent' => 'UnderstandFieldProvider::getClientUserAgent'
             ]
         ]
-    ]
+    ],
+
+    /**
+     * SSL CA Bundle location
+     */
+    'ssl_ca_bundle' => base_path('vendor/understand/understand-laravel/src/ca_bundle.crt')
 
 ];

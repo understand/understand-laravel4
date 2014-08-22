@@ -29,6 +29,13 @@ abstract class BaseHandler
     protected $silent = true;
 
     /**
+     * SSL CA bundle path
+     *
+     * @var string
+     */
+    protected $sslBundlePath;
+
+    /**
      * Send data to storage
      *
      * @param string $data
@@ -37,15 +44,17 @@ abstract class BaseHandler
     abstract protected function send($data);
 
     /**
-     * @param string $inputKey
+     * @param string $inputToken
      * @param string $apiUrl
-     * @param bool $silent
+     * @param boolean $silent
+     * @param string $sslBundlePath
      */
-    public function __construct($inputToken, $apiUrl, $silent = true)
+    public function __construct($inputToken, $apiUrl, $silent = true, $sslBundlePath = null)
     {
         $this->setInputKey($inputToken);
         $this->setApiUrl($apiUrl);
 
+        $this->sslBundlePath = $sslBundlePath;
         $this->silent = $silent;
     }
 

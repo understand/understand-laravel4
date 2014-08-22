@@ -17,8 +17,9 @@ class LaravelQueueListener
         $inputToken = \Config::get('understand-laravel::config.token');
         $apiUrl = \Config::get('understand-laravel::config.url', 'https://api.understand.io');
         $silent = \Config::get('understand-laravel::config.silent');
+        $sslBundlePath = \Config::get('understand-laravel::config.ssl_ca_bundle');
 
-        $syncHandler = new SyncHandler($inputToken, $apiUrl, $silent);
+        $syncHandler = new SyncHandler($inputToken, $apiUrl, $silent, $sslBundlePath);
         $syncHandler->handle($requestData);
 
         $job->delete();

@@ -23,6 +23,13 @@ class SyncHandler extends BaseHandler
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
         curl_setopt($ch, CURLOPT_TIMEOUT, 5);
 
+        if ($this->sslBundlePath)
+        {
+            curl_setopt($ch, CURLOPT_TIMEOUT, $this->sslBundlePath);
+        }
+
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Laravel service provider.');
+
         $response = curl_exec($ch);
         curl_close($ch);
 

@@ -142,15 +142,16 @@ class UnderstandLaravelServiceProvider extends ServiceProvider
         $apiUrl = $app['config']->get('understand-laravel::config.url', 'https://api.understand.io');
         $silent = $app['config']->get('understand-laravel::config.silent');
         $handlerType = $app['config']->get('understand-laravel::config.handler');
+        $sslBundlePath = $app['config']->get('understand-laravel::config.ssl_ca_bundle');
 
         if ($handlerType == 'sync')
         {
-            return new Handlers\SyncHandler($inputToken, $apiUrl, $silent);
+            return new Handlers\SyncHandler($inputToken, $apiUrl, $silent, $sslBundlePath);
         }
 
         if ($handlerType == 'queue')
         {
-            return new Handlers\LaravelQueueHandler($inputToken, $apiUrl, $silent);
+            return new Handlers\LaravelQueueHandler($inputToken, $apiUrl, $silent, $sslBundlePath);
         }
 
         throw new \ErrorException('understand-laravel handler misconfiguration:' . $handlerType);
