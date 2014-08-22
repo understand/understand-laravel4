@@ -47,7 +47,7 @@ return [
                 'env' => 'UnderstandFieldProvider::getEnvironment',
                 'url' => 'UnderstandFieldProvider::getUrl',
                 'method' => 'UnderstandFieldProvider::getRequestMethod',
-                'client_id' => 'UnderstandFieldProvider::getClientIp',
+                'client_ip' => 'UnderstandFieldProvider::getClientIp',
                 'user_agent' => 'UnderstandFieldProvider::getClientUserAgent'
             ]
         ]

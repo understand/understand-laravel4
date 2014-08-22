@@ -1,33 +1,51 @@
 ## Laravel service provider for Understand.io
 
+[![Build Status](https://travis-ci.org/understand/understand-laravel.svg)](https://travis-ci.org/understand/understand-laravel)
+[![Latest Stable Version](https://poser.pugx.org/understand/understand-laravel/v/stable.svg)](https://packagist.org/packages/understand/understand-laravel) 
+[![Latest Unstable Version](https://poser.pugx.org/understand/understand-laravel/v/unstable.svg)](https://packagist.org/packages/understand/understand-laravel) 
+[![License](https://poser.pugx.org/understand/understand-laravel/license.svg)](https://packagist.org/packages/understand/understand-laravel)
+
 ### Introduction
 
 This packages provides a full abstraction for Understand.io and provides extra features to improve Laravel's default logging capabilities. It is essentially a wrapper around Laravel's event handler to take full advantage of Understand.io's data aggregation and analysis capabilities.
 
 ### Quick start
 
-1. Add this package to your composer.json and run `composer update`:
+1. Add this package to your composer.json
 
     ```php
-    "understand/understand-laravel": "1.*"
+    "understand/understand-laravel": "0.0.*"
     ```
 
-2. Add the ServiceProvider to the providers array in app/config/app.php
+2. Update composer.json packages
+    
+    ```
+    composer update
+    ```
+
+3. Add the ServiceProvider to the providers array in app/config/app.php
   
     ```php
     'Understand\UnderstandLaravel\UnderstandLaravelServiceProvider',
     ```
 
-3. Publish configuration file
+4. Publish configuration file
 
     ```
     php artisan config:publish understand/understand-laravel
     ```
 
-4. Set your input key in config file
+5. Set your input key in config file
   
     ```php
     'token' => 'my-input-token'
+    ```
+
+6. Send your first event
+
+    ```php 
+    // anywhere inside your Laravel app
+    \Log::info('Understand.io test');
     ```
 
 ### How to send events/logs
@@ -35,6 +53,14 @@ This packages provides a full abstraction for Understand.io and provides extra f
 #### Laravel logs
 By default, Laravel automatically stores its logs in ```app/storage/logs```. By using this package, your logs can also be sent to your Understand.io channel. This includes error and exception logs, as well as any log events that you have defined (for example, ```Log::info('my custom log')```).
 
+```php 
+\Log::info('my message', ['my_custom_field' => 'my data']);
+```
+
+[Laravel logging documentation](http://laravel.com/docs/errors#logging)
+
+#### PHP/Laravel exceptions
+By default, All exceptions will be send to Understand.io service.
 
 #### Eloquent model logs
 Eloquent model logs are generated whenever one of the `created`, `updated`, `deleted` or `restored` Eloquent events is fired. This allows you to automatically track all changes to your models and will contain a current model diff (`$model->getDirty()`), the type of event (created, updated, etc) and additonal meta data (user_id, session_id, etc). This means that all model events will be transformed into a log event which will be sent to Understand.io.
@@ -42,7 +68,9 @@ Eloquent model logs are generated whenever one of the `created`, `updated`, `del
 By default model logs are disabled. To enable model logs, you can set the config value to `true`:
 
 ```php 
-'eloquent_logs' => true,
+'log_types' => [
+    'eloquent_log' => [
+        'enabled' => true,
 ```
 
 ### Additional meta data (field providers)
@@ -53,7 +81,7 @@ You may wish to capture additional meta data with each event. For example, it ca
  * Specify additional field providers for each log
  * E.g. sha1 version session_id will be appended to each "Log::info('event')"
  */
-    'log_types' => [
+'log_types' => [
     'eloquent_log' => [
         'enabled' => false,
         'meta' => [
@@ -82,7 +110,7 @@ You may wish to capture additional meta data with each event. For example, it ca
             'env' => 'UnderstandFieldProvider::getEnvironment',
             'url' => 'UnderstandFieldProvider::getUrl',
             'method' => 'UnderstandFieldProvider::getRequestMethod',
-            'client_id' => 'UnderstandFieldProvider::getClientIp',
+            'client_ip' => 'UnderstandFieldProvider::getClientIp',
             'user_agent' => 'UnderstandFieldProvider::getClientUserAgent'
         ]
     ]
@@ -132,7 +160,7 @@ Lets assume that you have defined a custom field provider called `getCurrentTemp
     'laravel_log' => [
         'meta' => [
             ...
-            'UnderstandFieldProvider::getCurrentTemperature',
+            'temperature' => 'UnderstandFieldProvider::getCurrentTemperature',
             ...
         ]
     ],
@@ -149,7 +177,7 @@ This additional meta data will then be automatically appended to all of your Lar
 ```
 
 
-### How to send data asynchnoously
+### How to send data asynchronously
 By default each log event will be sent to Understand.io's api server directly after the event happens. If you generate a large number of logs, this could slow your app down and, in these scenarios, we recommend that you make use of a queue handler. To do this, change the config parameter `handler` to `queue` and Laravel queues will be automatically used. Bear in mind that by the default Laravel queue is `sync`, so you will still need to configure your queues properly using something like iron.io or Amazon SQS. See http://laravel.com/docs/queues for more information. 
 
 ```php
@@ -208,7 +236,7 @@ return [
                 'env' => 'UnderstandFieldProvider::getEnvironment',
                 'url' => 'UnderstandFieldProvider::getUrl',
                 'method' => 'UnderstandFieldProvider::getRequestMethod',
-                'client_id' => 'UnderstandFieldProvider::getClientIp',
+                'client_ip' => 'UnderstandFieldProvider::getClientIp',
                 'user_agent' => 'UnderstandFieldProvider::getClientUserAgent'
             ]
         ]
