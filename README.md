@@ -11,25 +11,29 @@ This packages provides a full abstraction for Understand.io and provides extra f
 
 ### Quick start
 
-1. Add this package to your composer.json and run `composer update`:
+1. Add this package to your composer.json:
 
     ```php
     "understand/understand-laravel": "0.0.*"
     ```
 
-2. Add the ServiceProvider to the providers array in app/config/app.php
+2. Run:
+    
+    ```composer update```
+
+3. Add the ServiceProvider to the providers array in app/config/app.php
   
     ```php
     'Understand\UnderstandLaravel\UnderstandLaravelServiceProvider',
     ```
 
-3. Publish configuration file
+4. Publish configuration file
 
     ```
     php artisan config:publish understand/understand-laravel
     ```
 
-4. Set your input key in config file
+5. Set your input key in config file
   
     ```php
     'token' => 'my-input-token'
