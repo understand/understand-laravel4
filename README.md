@@ -11,13 +11,13 @@ This packages provides a full abstraction for Understand.io and provides extra f
 
 ### Quick start
 
-1. Add this package to your composer.json:
+1. Add this package to your composer.json
 
     ```php
     "understand/understand-laravel": "0.0.*"
     ```
 
-2. Run:
+2. Update composer.json packages
     
     ```
     composer update
@@ -41,7 +41,7 @@ This packages provides a full abstraction for Understand.io and provides extra f
     'token' => 'my-input-token'
     ```
 
-6. Send your first event:
+6. Send your first event
 
     ```php 
     // anywhere inside your Laravel app
