@@ -41,11 +41,26 @@ This packages provides a full abstraction for Understand.io and provides extra f
     'token' => 'my-input-token'
     ```
 
+6. Send your first event:
+
+    ```php 
+    // anywhere inside your Laravel app
+    \Log::info('Understand.io test');
+    ```
+
 ### How to send events/logs
 
 #### Laravel logs
 By default, Laravel automatically stores its logs in ```app/storage/logs```. By using this package, your logs can also be sent to your Understand.io channel. This includes error and exception logs, as well as any log events that you have defined (for example, ```Log::info('my custom log')```).
 
+```php 
+\Log::info('my message', ['my_custom_field' => 'my data']);
+```
+
+[Laravel logging documentation](http://laravel.com/docs/errors#logging)
+
+#### PHP/Laravel exceptions
+By default, All exceptions will be send to Understand.io service.
 
 #### Eloquent model logs
 Eloquent model logs are generated whenever one of the `created`, `updated`, `deleted` or `restored` Eloquent events is fired. This allows you to automatically track all changes to your models and will contain a current model diff (`$model->getDirty()`), the type of event (created, updated, etc) and additonal meta data (user_id, session_id, etc). This means that all model events will be transformed into a log event which will be sent to Understand.io.
@@ -53,7 +68,9 @@ Eloquent model logs are generated whenever one of the `created`, `updated`, `del
 By default model logs are disabled. To enable model logs, you can set the config value to `true`:
 
 ```php 
-'eloquent_logs' => true,
+'log_types' => [
+    'eloquent_log' => [
+        'enabled' => true,
 ```
 
 ### Additional meta data (field providers)
@@ -64,7 +81,7 @@ You may wish to capture additional meta data with each event. For example, it ca
  * Specify additional field providers for each log
  * E.g. sha1 version session_id will be appended to each "Log::info('event')"
  */
-    'log_types' => [
+'log_types' => [
     'eloquent_log' => [
         'enabled' => false,
         'meta' => [
