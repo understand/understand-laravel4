@@ -19,7 +19,9 @@ This packages provides a full abstraction for Understand.io and provides extra f
 
 2. Run:
     
-    ```composer update```
+    ```
+    composer update
+    ```
 
 3. Add the ServiceProvider to the providers array in app/config/app.php
   
