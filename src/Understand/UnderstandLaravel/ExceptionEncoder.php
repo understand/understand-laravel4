@@ -91,7 +91,7 @@ class ExceptionEncoder
      */
     protected function stackTraceCallToString(array $trace)
     {
-        if (!isset($trace['type']))
+        if (! isset($trace['type']))
         {
             return 'function';
         }
@@ -116,6 +116,11 @@ class ExceptionEncoder
     protected function stackTraceArgsToArray(array $trace)
     {
         $params = [];
+
+        if (! isset($trace['args']))
+        {
+            return $params;
+        }
 
         foreach ($trace['args'] as $arg)
         {

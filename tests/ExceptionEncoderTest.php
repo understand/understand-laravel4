@@ -42,4 +42,14 @@ class ExceptionEncoderTest extends PHPUnit_Framework_TestCase
         $this->assertSame('DomainException', $exceptionArray['message']);
     }
 
+    public function testStactTraceSerializationWithoutArgs()
+    {
+        $stackTrace = debug_backtrace();
+        unset($stackTrace[0]['args']);
+
+        $encoder = new Understand\UnderstandLaravel\ExceptionEncoder();
+        $stackTraceArray = $encoder->stackTraceToArray($stackTrace);
+
+        $this->assertEmpty($stackTraceArray[0]['args']);
+    }
 }
