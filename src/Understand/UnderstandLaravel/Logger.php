@@ -81,7 +81,7 @@ class Logger
 
         if (!isset($event['timestamp']))
         {
-            $event['timestamp'] = time();
+            $event['timestamp'] = round(microtime(true) * 1000);
         }
 
         return $event;
