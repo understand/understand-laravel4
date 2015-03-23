@@ -8,14 +8,24 @@ class LaravelQueueHandler extends BaseHandler
     /**
      * Send data to storage
      *
-     * @param array $event
+     * @param array $requestData
      * @return type
      */
     protected function send($requestData)
     {
-        \Queue::push('Understand\UnderstandLaravel\Handlers\LaravelQueueListener@listen', [
-            'requestData' => $requestData
-        ]);
+        try
+        {
+            \Queue::push('Understand\UnderstandLaravel\Handlers\LaravelQueueListener@listen', [
+                'requestData' => $requestData
+            ]);
+        }
+        catch (\Exception $ex)
+        {
+            if ( ! $this->silent)
+            {
+                throw new $ex;
+            }
+        }
     }
 
     /**
