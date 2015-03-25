@@ -1,4 +1,4 @@
-## Laravel service provider for Understand.io
+## Laravel 4 service provider for Understand.io
 
 [![Build Status](https://travis-ci.org/understand/understand-laravel.svg)](https://travis-ci.org/understand/understand-laravel)
 [![Latest Stable Version](https://poser.pugx.org/understand/understand-laravel/v/stable.svg)](https://packagist.org/packages/understand/understand-laravel) 
