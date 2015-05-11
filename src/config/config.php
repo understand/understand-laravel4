@@ -13,9 +13,12 @@ return [
     'silent' => true,
 
     /**
-     * Specify which handler to use (sync|queue)
+     * Specify which handler to use - sync, queue or async. 
+     * 
+     * Note that the async handler will only work in systems where 
+     * the CURL command line tool is installed
      */
-    'handler' => 'sync',
+    'handler' => 'sync', 
 
     'log_types' => [
         'eloquent_log' => [
