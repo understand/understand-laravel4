@@ -228,7 +228,7 @@ return [
      * Note that the async handler will only work in systems where 
      * the CURL command line tool is installed
      */
-    'handler' => 'async', 
+    'handler' => 'sync', 
     
     'log_types' => [
         'eloquent_log' => [
