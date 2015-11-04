@@ -5,7 +5,8 @@
 [![Latest Unstable Version](https://poser.pugx.org/understand/understand-laravel/v/unstable.svg)](https://packagist.org/packages/understand/understand-laravel) 
 [![License](https://poser.pugx.org/understand/understand-laravel/license.svg)](https://packagist.org/packages/understand/understand-laravel)
 
-> [Laravel 5 service provider](https://github.com/understand/understand-laravel5)
+> You may also be interested in our [Laravel 5](https://github.com/understand/understand-laravel5), [Laravel Lumen service provider](https://github.com/understand/understand-lumen) or [Monolog Understand.io handler](https://github.com/understand/understand-monolog)
+
 
 ### Introduction
 
