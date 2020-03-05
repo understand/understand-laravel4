@@ -1,5 +1,5 @@
 {
-    "name": "understand/understand-laravel",
+    "name": "understand/understand-laravel4",
     "description": "Laravel service provider for Understand.io",
     "keywords": ["laravel", "undertstand.io", "understand", "logs"],
     "license": "MIT",
