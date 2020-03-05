@@ -5,7 +5,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/understand/understand-laravel4/v/unstable.svg)](https://packagist.org/packages/understand/understand-laravel4) 
 [![License](https://poser.pugx.org/understand/understand-laravel4/license.svg)](https://packagist.org/packages/understand/understand-laravel4)
 
-> You may also be interested in our [Laravel 5/6/7](https://github.com/understand/understand-laravel), [Laravel Lumen service provider](https://github.com/understand/understand-lumen) or [Monolog Understand.io handler](https://github.com/understand/understand-monolog)
+> You may also be interested in our [Laravel 5, 6 or 7](https://github.com/understand/understand-laravel), [Laravel Lumen service provider](https://github.com/understand/understand-lumen) or [Monolog Understand.io handler](https://github.com/understand/understand-monolog)
 
 
 ### Introduction
