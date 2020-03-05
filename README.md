@@ -1,11 +1,11 @@
 ## Laravel 4 service provider for Understand.io
 
-[![Build Status](https://travis-ci.org/understand/understand-laravel.svg)](https://travis-ci.org/understand/understand-laravel)
-[![Latest Stable Version](https://poser.pugx.org/understand/understand-laravel/v/stable.svg)](https://packagist.org/packages/understand/understand-laravel) 
-[![Latest Unstable Version](https://poser.pugx.org/understand/understand-laravel/v/unstable.svg)](https://packagist.org/packages/understand/understand-laravel) 
-[![License](https://poser.pugx.org/understand/understand-laravel/license.svg)](https://packagist.org/packages/understand/understand-laravel)
+[![Build Status](https://travis-ci.org/understand/understand-laravel4.svg)](https://travis-ci.org/understand/understand-laravel4)
+[![Latest Stable Version](https://poser.pugx.org/understand/understand-laravel4/v/stable.svg)](https://packagist.org/packages/understand/understand-laravel4) 
+[![Latest Unstable Version](https://poser.pugx.org/understand/understand-laravel4/v/unstable.svg)](https://packagist.org/packages/understand/understand-laravel4) 
+[![License](https://poser.pugx.org/understand/understand-laravel4/license.svg)](https://packagist.org/packages/understand/understand-laravel4)
 
-> You may also be interested in our [Laravel 5](https://github.com/understand/understand-laravel5), [Laravel Lumen service provider](https://github.com/understand/understand-lumen) or [Monolog Understand.io handler](https://github.com/understand/understand-monolog)
+> You may also be interested in our [Laravel 5/6/7](https://github.com/understand/understand-laravel), [Laravel Lumen service provider](https://github.com/understand/understand-lumen) or [Monolog Understand.io handler](https://github.com/understand/understand-monolog)
 
 
 ### Introduction
