@@ -17,7 +17,7 @@ This packages provides a full abstraction for Understand.io and provides extra f
 1. Add this package to your composer.json
 
     ```php
-    "understand/understand-laravel": "0.0.*"
+    "understand/understand-laravel4": "0.0.*"
     ```
 
 2. Update composer.json packages
